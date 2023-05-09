@@ -62,6 +62,7 @@ function ListEmployee(props) {
 							>
 								{'Hire Date'}
 							</th>
+
 							{/* <th
 								key={'h-edit'}
 								className='px-2 text-start bg-gray-200 text-gray-600'

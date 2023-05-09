@@ -10,7 +10,7 @@ function AddEmployee() {
 		birthday: '',
 		hireDate: moment().format('YYYY-MM-DD'),
 		departmentID: 0,
-		salary: 0,
+		// salary: 0,
 	});
 
 	const [departments, setDepartments] = useState([
@@ -52,7 +52,7 @@ function AddEmployee() {
 				birthday: '',
 				hireDate: moment().format('YYYY-MM-DD'),
 				departmentID: '0',
-				salary: 0,
+				// salary: 0,
 			});
 		} else {
 			console.log('error');
@@ -127,7 +127,7 @@ function AddEmployee() {
 								className='bg-gray-50 outline-0 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full px-2 py-2'
 							>
 								<option
-									key={`depmnt-empty}`}
+									key={`department-empty}`}
 									value={''}
 									selected={addForm.departmentID === '0'}
 								>
@@ -135,7 +135,7 @@ function AddEmployee() {
 								</option>
 								{departments.map((department, index) => (
 									<option
-										key={`depmnt-${index}`}
+										key={`department-${index}`}
 										value={department.departmentID}
 										selected={
 											addForm.departmentID ===
@@ -209,7 +209,7 @@ function AddEmployee() {
 								className='outline-0'
 							/>
 						</div>
-						<div className='form-group inline-block'>
+						{/* <div className='form-group inline-block'>
 							<label
 								className='label text-sm text-gray-600 mb-2'
 								htmlFor='salary'
@@ -227,7 +227,7 @@ function AddEmployee() {
 								onChange={manejarCambio}
 								className='outline-0 placeholder:text-gray-400 placeholder:text-sm text-sm block bg-white w-full border border-slate-300 rounded-lg py-[6px] pl-4 pr-3 shadow-sm'
 							/>
-						</div>
+						</div> */}
 						<div className='form-group inline-block'>
 							<label
 								className='label text-sm text-gray-600 mb-2'
