@@ -1,15 +1,45 @@
 import { Tooltip } from 'react-tippy';
 import PlusIcon from '../icons/PlusIcon';
 import { Link } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
 
 function ListEmployee(props) {
-	const { employees, reload } = props;
+	const { employees, reload, setEmployees } = props;
+
+	async function deleteEmployee(id) {
+		console.log(id);
+		const respuesta = await fetch(
+			`${'http://localhost:8000'}/deleteEmployee.php?id=${id}`,
+			{
+				method: 'DELETE',
+			}
+		);
+		const exitoso = await respuesta.json();
+		if (exitoso) {
+			toast.success('Deleted employee ', {
+				position: 'bottom-right',
+				autoClose: 4000,
+				hideProgressBar: false,
+				closeOnClick: true,
+				pauseOnHover: true,
+				draggable: true,
+				progress: undefined,
+			});
+			const filtered = employees.filter(
+				(employee) => employee.employeeID !== id
+			);
+			setEmployees(filtered);
+		} else {
+			toast.error('Error!!. try again.');
+		}
+	}
 
 	return (
 		<div className='w-[80%] flex flex-col mx-[10%] mt-4'>
 			<div className='flex flex-col md:flex-row justify-between'>
 				<div className='text-xl mb-6'>
 					{'List of Employees'}
+					<ToastContainer />
 					<Tooltip
 						position='top'
 						html={<div className='rounded-lg '>{'Reload'}</div>}
@@ -68,13 +98,13 @@ function ListEmployee(props) {
 								className='px-2 text-start bg-gray-200 text-gray-600'
 							>
 								{'Editar'}
-							</th>
+							</th> */}
 							<th
 								key={'h-delete'}
 								className='rounded-r-lg px-2 text-start bg-gray-200 text-gray-600'
 							>
 								{'Eliminar'}
-							</th> */}
+							</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -106,12 +136,19 @@ function ListEmployee(props) {
 											<button className='bg-gray-400 rounded-lg px-3 py-2 text-white cursor-not-allowed'>
 												{'Edit'}
 											</button>
-										</td>
+										</td> */}
 										<td className='px-2 pt-2'>
-											<button className='bg-red-400 rounded-lg px-3 py-2 text-white cursor-not-allowed'>
+											<button
+												onClick={() =>
+													deleteEmployee(
+														employee.employeeID
+													)
+												}
+												className='bg-red-400 rounded-lg px-3 py-2 text-white'
+											>
 												{'Delete'}
 											</button>
-										</td> */}
+										</td>
 									</tr>
 								);
 							})

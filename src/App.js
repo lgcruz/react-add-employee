@@ -43,6 +43,7 @@ function App() {
 							<ListEmployee
 								employees={employees}
 								reload={fetchData}
+								setEmployees={setEmployees}
 							/>
 						}
 					/>
@@ -52,6 +53,7 @@ function App() {
 							<ListEmployee
 								employees={employees}
 								reload={fetchData}
+								setEmployees={setEmployees}
 							/>
 						}
 					/>
